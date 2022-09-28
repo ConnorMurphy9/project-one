@@ -5,51 +5,86 @@ var dinnerChoice = document.getElementById("dinnerInput").value;
 var dinnerBtn = document.getElementById("dinnerBtn");
 var cocktailChoice = document.getElementById("cocktailInput").value;
 var cocktailBtn = document.getElementById("cocktailBtn");
+var rightCard = document.getElementById("right");
+var leftCard = document.getElementById("left");
 
-// dinnerBtn.addEventListener('click', dinnerSearch);
+// dinnerBtn.addEventListener('click', dinnerChoice);
 // cocktailBtn.addEventListener('click', cocktailChoice);
 
-// function cocktailSearch() {
-// var cocktailSearch = document.getelementbyid("cocktailInput").value;
-// console.log(cocktailSearch);
-// $.ajax({
-//     method: 'GET',
-//     url: 'https://api.api-ninjas.com/v1/cocktail?name=' + cocktailSearch,
-//     headers: { 'X-Api-Key': 'cocktailAPIKey'},
-//     contentType: 'application/json',
-//     success: function(result) {
-//         console.log(result);
-//     },
-//     error: function ajaxError(jqXHR) {
-//         console.error('Error: ', jqXHR.responseText);
-//     }
-// });
-// }
+
+// // If user wants to filter by cuisine, fetch this
+// if (chooseCuisine === true) {
+// fetch(`https://api.spoonacular.com/recipes/complexSearch?apiKey=${spoonacularAPIKey}&cuisine=${dinnerChoice}`)
+// .then(response => response.json())
+// .then(response => console.log(response))
+// .catch(err => console.error(err));
+// };
+
+// // If user wants to filter by diet, fetch this
+// if (chooseDiet === true) {
+// fetch(`https://api.spoonacular.com/recipes/complexSearch?apiKey=${spoonacularAPIKey}&diet=${dinnerChoice}`)
+// .then(response => response.json())
+// .then(response => console.log(response))
+// .catch(err => console.error(err));
+// };
+
+// // If user wants to filter by type (such as main course, side dish, or snack), fetch this
+// if (chooseType === true) {
+//     fetch(`https://api.spoonacular.com/recipes/complexSearch?apiKey=${spoonacularAPIKey}&type=${dinnerChoice}`)
+//     .then(response => response.json())
+//     .then(response => console.log(response))
+//     .catch(err => console.error(err));
+//     };
+
+// // If user wants to filter by dietary intolerances (such as peanut, gluten, or dairy allergy), fetch this
+// if (chooseIntolerance === true) {
+//     fetch(`https://api.spoonacular.com/recipes/complexSearch?apiKey=${spoonacularAPIKey}&intolerances=${dinnerChoice}`)
+//     .then(response => response.json())
+//     .then(response => console.log(response))
+//     .catch(err => console.error(err));
+//     };
 
 
-    
-    fetch(`https://www.thecocktaildb.com/api/json/v1/1/search.php?i=${cocktailInput}`)
-        .then(response => response.json())
-        .then(response => console.log(response))
-        .catch(err => console.error(err));
 
 
-fetch(`https://api.spoonacular.com/recipes/complexSearch?cuisine=${dinnerChoice}&type=${dinnerChoice}apiKey=${spoonacularAPIKey}`)
-.then(response => response.json())
-.then(response => console.log(response))
-.catch(err => console.error(err));
+    // If user wants to filter cocktail search criteria by name (such as margarita), fetch this
+// fetch(`https://www.thecocktaildb.com/api/json/v1/1/search.php?s=${cocktailChoice}`)
+//         .then(response => response.json())
+//         .then(response => console.log(response))
+//         .catch(err => console.error(err));
+
+    // If user wants to filter cocktail search by ingredient (such as vodka), fetch this
+// fetch(`https://www.thecocktaildb.com/api/json/v1/1/search.php?i=${cocktailChoice}`)
+//         .then(response => response.json())
+//         .then(response => console.log(response))
+//         .catch(err => console.error(err));
+
+    // If user wants to filter cocktail search by simply pressing a letter and returning results that have that letter as the first letter, fetch this
+// fetch(`https://www.thecocktaildb.com/api/json/v1/1/search.php?f=${cocktailChoice}`)
+//         .then(response => response.json())
+//         .then(response => console.log(response))
+//         .catch(err => console.error(err));
+
+    // If user wants to filter cocktail search by category (such as ordinary drink or cocktail), fetch this
+// fetch(`https://www.thecocktaildb.com/api/json/v1/1/search.php?c=${cocktailInput}`)
+//         .then(response => response.json())
+//         .then(response => console.log(response))
+//         .catch(err => console.error(err));
+
+
+// If user wants to get a random cocktail, fetch this
+// fetch(`https://www.thecocktaildb.com/api/json/v1/1/random.php`)
+//         .then(response => response.json())
+//         .then(response => console.log(response))
+//         .catch(err => console.error(err));
 
 
 
-//         www.thecocktaildb.com/api/json/v1/1/filter.php?i=Gin
-
-// cocktailSearch();
 
 
-// function dinnerSearch() {
 
-// }
 
+// Wrap each filter search inside of two separate functions that are each called when user presses search button for both cocktail and food searches?
 
 
 
