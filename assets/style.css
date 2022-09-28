@@ -13,29 +13,22 @@
     justify-content:space-evenly;
 
 }
-#left{
-background-color:#74ccf4;
-max-width:50%;
-padding:20px;
-flex:1;
-border-radius:25px;
-}
-#right{
+#left, #right{
     background-color:#5ABCD8;
     max-width:50%;
-    padding:20px;
-    flex:1;
+    padding:20px 0 30px 0;
     border-radius:25px;
-    justify-content:end ;
+    justify-content:end;
+    text-align: center;
 }
 .main-content{
     display:flex;
     justify-content:space-evenly;
 }
-
 #body{
     background-color: gray;
-    background-image: url(background.png);
+    background-image: url("background.png");
+
     /* background-repeat: no-repeat; */
     /* background-size: cover; */
     /* background-position: center; */
@@ -51,6 +44,15 @@ border-radius:25px;
     z-index: -10;
     animation: animatedBackground 10s linear infinite alternate;
 }
+@keyframes animatedBackground {
+    from {
+      background-position: 0 0;
+    }
+    to {
+      background-position: 100% 0;
+    }
+  }
+
 @keyframes animatedBackground {
     from {
       background-position: 0 0;
