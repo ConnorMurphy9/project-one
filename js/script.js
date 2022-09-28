@@ -28,18 +28,18 @@ var cocktailBtn = document.getElementById("cocktailBtn");
 
 
     
-    fetch(`https://www.thecocktaildb.com/api/json/v1/1/search.php?i=${cocktailInput}`)
-        .then(response => response.json())
-        .then(response => console.log(response))
-        .catch(err => console.error(err));
+fetch(`https://www.thecocktaildb.com/api/json/v1/1/search.php?i=${cocktailInput}`)
+    .then(response => response.json())
+    .then(response => console.log(response))
+    .catch(err => console.error(err));
 
 
 fetch(`https://api.spoonacular.com/recipes/complexSearch?cuisine=${dinnerChoice}&type=${dinnerChoice}apiKey=${spoonacularAPIKey}`)
-.then(response => response.json())
-.then(response => console.log(response))
-.catch(err => console.error(err));
+    .then(response => response.json())
+    .then(response => console.log(response))
+    .catch(err => console.error(err));
 
-
+document.getElementById(image).appendChild(cocAPI)
 
 //         www.thecocktaildb.com/api/json/v1/1/filter.php?i=Gin
 
