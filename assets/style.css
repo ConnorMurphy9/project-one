@@ -8,10 +8,28 @@
     background-color:#0f5e9c;
     border-radius:8px;
 }
+
+.nav ul{
+    margin:0%
+       
+}
+.nav li{
+    display: inline;
+}
+.nav a{
+    display: inline-block;
+    padding: .5em;
+    color: white;
+    text-decoration: none;
+}
+#list{
+    display: flex;
+}
 #top-menu{
     display:flex;
     justify-content:space-evenly;
-
+    background-color: white;
+    border-radius: 25px;
 }
 #left, #right{
     background-color:#5ABCD8;
@@ -70,14 +88,15 @@
         width:auto;
     }
 }
-li{
-    justify-content: row;
-}
-
 .img-wrapper{
     height: 300px;
 }
 
 .img-wrapper img{
     height: 100%;
+}
+li{
+    font-size: 20px;
+    color: white
+ 
 }
