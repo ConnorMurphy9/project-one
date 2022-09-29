@@ -43,17 +43,17 @@
  
  
 
-        <form class="form-inline" id="cocktail-search"> 
+        <form class="form-inline"> 
 
  
  
 
-            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search"> 
+            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" id="cocktailInput"> 
 
  
  
 
-            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button> 
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit" id="cocktailBtn">Search</button> 
 
  
  
@@ -63,7 +63,7 @@
  
  
 
-        <form class="form-inline" id="dinner-search"> 
+        <form class="form-inline" id="dinnerInput"> 
 
  
  
@@ -73,7 +73,8 @@
  
  
 
-            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button> 
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit"
+            id="dinnerBtn">Search</button> 
 
  
  
@@ -118,16 +119,20 @@
 
                 <img class="img-fluid" src="assets/cocktail.jpg" alt="cocktail"> 
                 <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
-                    <div class="carousel-inner">
-                      <div class="carousel-item active" id="drink1">
-                        <img class="d-block w-100" src=".../800x400?auto=yes&bg=777&fg=555&text=First slide" alt="First slide" id="dimg1">
+                    <div class="carousel-inner" id="carouselInner">
+                      <!-- <div class="carousel-item active">
+                        
+                        <img class="d-block w-100" src="" alt="First slide" id="dimg1">
+                            <div id="drink1"></div>
                       </div>
                       <div class="carousel-item" id="drink2">
-                        <img class="d-block w-100" src=".../800x400?auto=yes&bg=666&fg=444&text=Second slide" alt="Second slide" id="dimg2">
+                        <img class="d-block w-100" src="" alt="Second slide" id="dimg2">
+                        <div id="drink2"></div>
                       </div>
                       <div class="carousel-item" id="drink3">
-                        <img class="d-block w-100" src=".../800x400?auto=yes&bg=555&fg=333&text=Third slide" alt="Third slide" id="dimg3">
-                      </div>
+                        <img class="d-block w-100" src="" alt="Third slide" id="dimg3">
+                        <div id="drink3"></div>
+                      </div> -->
                     </div>
                     <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
                       <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -160,7 +165,7 @@
         </div> 
 
     </div> 
-
+    <script src="./js/script.js"></script>
 </body> 
 
  
