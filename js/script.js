@@ -1,5 +1,5 @@
 var spoonacularAPIKey = "af28c41e911742cab678a8ddcd93acaa";
-// var cocktailAPIKey = "KxE5FMqtJE+cddRT34B6Vw==Qj3At9bRl1rlRw1Z";
+var cocktailAPIKey = "KxE5FMqtJE+cddRT34B6Vw==Qj3At9bRl1rlRw1Z";
 var cocktailAPIKey = "d9d1de419cmsh3efe3d08141101ap1d1cdejsnd21e801ce08b"
 var dinnerChoice = document.getElementById("dinnerInput").value;
 var dinnerBtn = document.getElementById("dinnerBtn");
@@ -7,7 +7,15 @@ var cocktailChoice = document.getElementById("cocktailInput").value;
 var cocktailBtn = document.getElementById("cocktailBtn");
 var rightCard = document.getElementById("right");
 var leftCard = document.getElementById("left");
-
+var dirnk1 = document.getElementById('drink1');
+var dirnk2 = document.getElementById('drink2');
+var dirnk3 = document.getElementById('drink3');
+var dimg1 = document.getElementById('dimg1');
+var dimg2 = document.getElementById('dimg2');
+var dimg3 = document.getElementById('dimg3');
+var food1 = document.getElementById('food1');
+var food2 = document.getElementById('food2');
+var food3 = document.getElementById('food3');
 // dinnerBtn.addEventListener('click', dinnerChoice);
 // cocktailBtn.addEventListener('click', cocktailChoice);
 
@@ -20,6 +28,11 @@ var leftCard = document.getElementById("left");
 // .catch(err => console.error(err));
 // };
 
+    
+// fetch(`https://www.thecocktaildb.com/api/json/v1/1/search.php?i=${cocktailInput}`)
+//     .then(response => response.json())
+//     .then(response => console.log(response))
+//     .catch(err => console.error(err));
 // // If user wants to filter by diet, fetch this
 // if (chooseDiet === true) {
 // fetch(`https://api.spoonacular.com/recipes/complexSearch?apiKey=${spoonacularAPIKey}&diet=${dinnerChoice}`)
@@ -35,6 +48,22 @@ var leftCard = document.getElementById("left");
 //     .then(response => console.log(response))
 //     .catch(err => console.error(err));
 //     };
+
+// fetch(`https://api.spoonacular.com/recipes/complexSearch?cuisine=${dinnerChoice}&type=${dinnerChoice}apiKey=${spoonacularAPIKey}`)
+//     .then(response => response.json())
+//     .then(response => console.log(response))
+//     .catch(err => console.error(err));
+
+document.getElementById(image).appendChild(cocAPI)
+
+//         www.thecocktaildb.com/api/json/v1/1/filter.php?i=Gin
+
+// cocktailSearch();
+
+
+// function dinnerSearch() {
+
+// }
 
 // // If user wants to filter by dietary intolerances (such as peanut, gluten, or dairy allergy), fetch this
 // if (chooseIntolerance === true) {
