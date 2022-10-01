@@ -99,10 +99,10 @@ var cocktailData = cocktailChoiceEl.value;
         console.warn("no drink data");
         return;
       }
-      // for length of drink list returned, 
+      // for each data object in length of drink list returned, 
       for (let x = 0; x < data.drinks.length; x++) {
        
-        // create variable called "obj" which is all (x) of the drinks returned in data object
+        // create variable called "obj" 
         var obj = data.drinks[x];
         console.log(data);
         
@@ -110,28 +110,41 @@ var cocktailData = cocktailChoiceEl.value;
         console.log("obj", obj);
        
         // create div element onto HTML called carouselDiv
-        const carouselDiv = document.createElement("div")
+        const carouselDiv = document.createElement("div");
         // console.log(carouselDiv);
         
         // set attribute of carouselDiv element to: "class", "carousel-item"
-        carouselDiv.setAttribute("class", "carousel-item")
+        carouselDiv.setAttribute("class", "carousel-item");
        
         // will always set first item of carousel to active as long as for loop above starts x at 0
-        if (x === 0) carouselDiv.setAttribute("class", "carousel-item active")
+        if (x === 0) carouselDiv.setAttribute("class", "carousel-item active");
         
-        const cocktailRecipeName0 = document.createElement("");
-
+        // var cocktailNameArray;
+        
+        
+        // const cocktailRecipeNameDiv = document.createElement("div");
+        // carouselDiv.appendChild(cocktailRecipeNameDiv);
+        // cocktailRecipeNameDiv.textContent = `${data.drinks[x].strDrink}`;
+        // console.log(cocktailRecipeNameDiv);
+       
         // set const "img" as actual img element being created in HTML
-        const img = document.createElement("img");
+        /*const img = document.createElement("img");*/
         // img.crossOrigin = "Anonymous";
         
         // set image attributes in HTML of said const img src to whichever part in the data contains a real image or some kind of data
-        img.setAttribute("src", obj.strImageSource || obj.strDrinkThumb);
+        /*img.setAttribute("src", obj.strImageSource || obj.strDrinkThumb);*/
         // console.log(obj.strImageSource);
         
         // append the img to the carouselDiv element
-        carouselDiv.appendChild(img);
+        /*carouselDiv.appendChild(img);*/
        
+        const cocktailRecipeNameDiv = document.createElement("div");
+        carouselDiv.appendChild(cocktailRecipeNameDiv);
+        cocktailRecipeNameDiv.textContent = `${data.drinks[x].strDrink}`;
+        console.log(cocktailRecipeNameDiv);
+
+
+
         // set const "ingredientDiv" as new div in HTML 
         const ingredientDiv = document.createElement("div");
         
@@ -150,27 +163,24 @@ var cocktailData = cocktailChoiceEl.value;
         for (let i in ingredientArray) {
           // (var i=0; i<ingredientArray.length; i++);
          
-          // using 1 for index here because the ingredientArray index of 0 in each is literally just strIngredient1, strIngredient2...etc. This gives us actual ingredients instead of nonsense  
+          // using 1 for index here because the ingredientArray index of 0 in each object is literally just strIngredient1, strIngredient2...etc. This gives us actual ingredients instead of nonsense  
             if (ingredientArray[i][1] != null) {
               
               // as long as there is an ingredient to list in data, create a "p" element
               let p = document.createElement("p");
               // set the text content of this new p element to the ingredient
               p.textContent = ingredientArray[i][1];
-              console.log(ingredientArray[i][0]);
+              // console.log(ingredientArray[i][0]);
               console.log(ingredientArray[i][1]);
               // add this new p element to the ingredientDiv element
               ingredientDiv.appendChild(p);
-
+              // cocktailRecipeName.textContent = `${data.drinks[i].strDrink}`;
           }
         }
-        
         carouselInner.appendChild(carouselDiv);
-        // carouselExampleControls.textContent = `${data.drinks[x].strDrink}`;
-      // var cocktailNameArray = data.drinks[0].strDrink;
-      // for (let j in cocktail)
-      //   // for (var i = )
+  
       }
+      console.log(data.drinks[0].strDrink);
     });
 }
 
