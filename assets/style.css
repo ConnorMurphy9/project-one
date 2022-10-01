@@ -100,3 +100,12 @@ li{
     color: white
  
 }
+
+p {
+    margin-top: 50px;
+    margin-bottom: 20px;
+}
+
+div {
+    margin-top: 40px;
+}
