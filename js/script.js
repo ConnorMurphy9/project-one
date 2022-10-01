@@ -1,6 +1,6 @@
 var spoonacularAPIKey = "af28c41e911742cab678a8ddcd93acaa";
 var cocktailAPIKey = "d9d1de419cmsh3efe3d08141101ap1d1cdejsnd21e801ce08b";
-// var dinnerChoice = document.getElementById("dinnerInput").value;
+var dinnerChoice;
 var dinnerBtnEl = document.getElementById("dinnerBtn");
 var cocktailChoiceEl = document.getElementById("cocktailInput");
 var cocktailBtnEl = document.getElementById("cocktailBtn");
@@ -12,9 +12,7 @@ var drink3El = document.getElementById("drink3");
 var dimg1El = document.getElementById("dimg1");
 var dimg2El = document.getElementById("dimg2");
 var dimg3El = document.getElementById("dimg3");
-var food1El = document.getElementById("food1");
-var food2El = document.getElementById("food2");
-var food3El = document.getElementById("food3");
+var dinnerEl = "";
 var carouselInner = document.getElementById("carouselInner");
 var cocktailData;
 var cocktailInfo1 = "";
@@ -75,7 +73,7 @@ var cocktailInfo3 = "";
 cocktailBtnEl.addEventListener("click", cocktailNameSearch);
 function cocktailNameSearch(event) {
   event.preventDefault();
-var carouselExampleControls = document.getElementById("carouselExampleControls");
+
 
 // Targets div id "drink1" of carousel on left of page
 cocktailInfo1 = document.getElementById("drink1");
@@ -119,14 +117,6 @@ var cocktailData = cocktailChoiceEl.value;
         // will always set first item of carousel to active as long as for loop above starts x at 0
         if (x === 0) carouselDiv.setAttribute("class", "carousel-item active");
         
-        // var cocktailNameArray;
-        
-        
-        // const cocktailRecipeNameDiv = document.createElement("div");
-        // carouselDiv.appendChild(cocktailRecipeNameDiv);
-        // cocktailRecipeNameDiv.textContent = `${data.drinks[x].strDrink}`;
-        // console.log(cocktailRecipeNameDiv);
-       
         // set const "img" as actual img element being created in HTML
         /*const img = document.createElement("img");*/
         // img.crossOrigin = "Anonymous";
@@ -186,9 +176,28 @@ var cocktailData = cocktailChoiceEl.value;
     });
 }
 
-// function populateCocktailCard() {
+dinnerBtnEl.addEventListener('click', dinnerSearch);
 
-// }
+function dinnerSearch() {
+  var dinnerChoice = document.getElementById("dinnerInput");
+  
+  var dinnerEl = document.getElementById("dinnerEl");
+
+  fetch(`https://api.spoonacular.com/recipes/search?apiKey=${spoonacularAPIKey}&${dinnerChoice}`)
+  .then((response) => response.json())
+  .then(function (data) {
+    console.log(data);
+    // if no food data, stop
+    // if (data.drinks.length === 0) {
+    //   console.warn("no drink data");
+      // return;
+    })};
+
+
+
+
+
+// 
 // If user wants to filter cocktail search by ingredient (such as vodka), fetch this
 // fetch(`https://www.thecocktaildb.com/api/json/v1/1/search.php?i=${cocktailChoice}`)
 //         .then(response => response.json())
