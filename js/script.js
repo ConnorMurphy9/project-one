@@ -70,10 +70,18 @@ var cocktailInfo3 = "";
 //     .catch(err => console.error(err));
 
 // If user wants to filter cocktail search criteria by name (such as margarita), fetch this
+
+// When user clicks cocktail button, search for a cocktail
 cocktailBtnEl.addEventListener("click", cocktailNameSearch);
-function cocktailNameSearch() {
-  //
-  let cocktailData = cocktailChoiceEl.value;
+function cocktailNameSearch(event) {
+  event.preventDefault();
+var carouselExampleControls = document.getElementById("carouselExampleControls");
+
+// Targets div id "drink1" of carousel on left of page
+cocktailInfo1 = document.getElementById("drink1");
+  
+// cocktailData variable is is user's cocktail input
+var cocktailData = cocktailChoiceEl.value;
   //     fetch(`https://www.thecocktaildb.com/api/json/v1/1/search.php?s=${cocktailChoice}`)
   //         .then(response => response.json())
   //         .then(function(data) {console.log(data);
@@ -81,52 +89,87 @@ function cocktailNameSearch() {
   //             cocktailInfo1.innerHTML = `<h2 id="drinkName1">${data.drinks[0].strDrink}</h2><p
   //             id="ingredients">Ingredients:${data.drinks[0]}`
   console.log(cocktailData);
-  fetch(
-    `https://www.thecocktaildb.com/api/json/v1/1/search.php?s=${cocktailData}`,
-    {headers: {
-        // "Access-Control-Allow-Origin": "*",
-        // "Content-Type": "application/json"
-    }
-    }
-
-  )
+  
+  // search cocktail api database for drink based on what user typed, return data as object
+  fetch(`https://www.thecocktaildb.com/api/json/v1/1/search.php?s=${cocktailData}`)
     .then((response) => response.json())
     .then(function (data) {
+      // if no drink data, stop
       if (data.drinks.length === 0) {
         console.warn("no drink data");
         return;
       }
+      // for length of drink list returned, 
       for (let x = 0; x < data.drinks.length; x++) {
+       
+        // create variable called "obj" which is all (x) of the drinks returned in data object
         var obj = data.drinks[x];
         console.log(data);
-        console.log("herrrrrererere", Object.entries(obj));
+        
+        // console.log("herrrrrererere", Object.entries(obj));
         console.log("obj", obj);
+       
+        // create div element onto HTML called carouselDiv
         const carouselDiv = document.createElement("div")
+        // console.log(carouselDiv);
+        
+        // set attribute of carouselDiv element to: "class", "carousel-item"
         carouselDiv.setAttribute("class", "carousel-item")
+       
+        // will always set first item of carousel to active as long as for loop above starts x at 0
         if (x === 0) carouselDiv.setAttribute("class", "carousel-item active")
-        const img = document.createElement("img")
+        
+        const cocktailRecipeName0 = document.createElement("");
+
+        // set const "img" as actual img element being created in HTML
+        const img = document.createElement("img");
         // img.crossOrigin = "Anonymous";
+        
+        // set image attributes in HTML of said const img src to whichever part in the data contains a real image or some kind of data
         img.setAttribute("src", obj.strImageSource || obj.strDrinkThumb);
-        console.log(obj.strImageSource);
-        carouselDiv.appendChild(img)
-
+        // console.log(obj.strImageSource);
+        
+        // append the img to the carouselDiv element
+        carouselDiv.appendChild(img);
+       
+        // set const "ingredientDiv" as new div in HTML 
         const ingredientDiv = document.createElement("div");
+        
+        // add the new ingredientDiv to the carouselDiv
         carouselDiv.appendChild(ingredientDiv);
+        
 
-        ingredientDiv
+        // declare new variable for ingredients list inside drinks data
         var ingredientArray = Object.entries(obj).slice(17, 32);
         console.log("ingredientArray", ingredientArray);
+        
+        // set "drink1" element of carousel's contents as a string 
         cocktailInfo1.innerHTML = "";
+       
+        // declares temporary variable/index "i" inside ingredient array
         for (let i in ingredientArray) {
-          //(var i=0; i<ingredientArray.length; i++);
-          if (ingredientArray[i][1] != null) {
-            let p = document.createElement("p");
-            p.textContent = ingredientArray[i][1];
-            console.log(ingredientArray[i][1]);
-            ingredientDiv.appendChild(p);
+          // (var i=0; i<ingredientArray.length; i++);
+         
+          // using 1 for index here because the ingredientArray index of 0 in each is literally just strIngredient1, strIngredient2...etc. This gives us actual ingredients instead of nonsense  
+            if (ingredientArray[i][1] != null) {
+              
+              // as long as there is an ingredient to list in data, create a "p" element
+              let p = document.createElement("p");
+              // set the text content of this new p element to the ingredient
+              p.textContent = ingredientArray[i][1];
+              console.log(ingredientArray[i][0]);
+              console.log(ingredientArray[i][1]);
+              // add this new p element to the ingredientDiv element
+              ingredientDiv.appendChild(p);
+
           }
         }
+        
         carouselInner.appendChild(carouselDiv);
+        // carouselExampleControls.textContent = `${data.drinks[x].strDrink}`;
+      // var cocktailNameArray = data.drinks[0].strDrink;
+      // for (let j in cocktail)
+      //   // for (var i = )
       }
     });
 }
@@ -159,3 +202,4 @@ function cocktailNameSearch() {
 //         .catch(err => console.error(err));
 
 // Wrap each filter search inside of two separate functions that are each called when user presses search button for both cocktail and food searches?
+
