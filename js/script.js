@@ -169,7 +169,7 @@ var cocktailData = cocktailChoiceEl.value;
               // as long as there is an ingredient to list in data, create a "p" element
               let p = document.createElement("p");
               // set the text content of this new p element to the ingredient
-              p.textContent = ingredientArray[i][1];
+              p.textContent = "Ingredient:" + ingredientArray[i][1];
               // console.log(ingredientArray[i][0]);
               console.log(ingredientArray[i][1]);
               // add this new p element to the ingredientDiv element
@@ -178,7 +178,9 @@ var cocktailData = cocktailChoiceEl.value;
           }
         }
         carouselInner.appendChild(carouselDiv);
-  
+        const cocktailInstructionP = document.createElement("p");
+        carouselDiv.appendChild(cocktailInstructionP)
+        cocktailInstructionP.textContent = "Instructions: " + `${data.drinks[x].strInstructions}`
       }
       console.log(data.drinks[0].strDrink);
     });
