@@ -11,7 +11,7 @@ var cocktailsResultsEl = document.querySelector(".cocktails-results")
 var dishForm = document.querySelector(".dish-form");
 var dishInput = document.querySelector(".dish-input");
 var dishesResult = document.querySelector(".dishes-results");
-var savedRecipes;
+var savedRecipes = [];
 
 
 
@@ -27,7 +27,7 @@ dishForm.addEventListener("submit", (e) => {
     let fetchDish = fetch('https://api.spoonacular.com/recipes/findByIngredients?apiKey='+spoonacularAPIKey+'&ingredients='+dishValue+'&number=5', options)
     .then(response => response.json())
     .then(response => {
-        console.log(response);
+       
         return response.forEach((res) => {
             dishesResult.innerHTML += `
             <div class="card-info">
@@ -68,16 +68,16 @@ cocktailBtnEl.addEventListener("click", cocktailSearch);
 function cocktailSearch (event) {
   event.preventDefault();
   cocktailChoiceEl = document.getElementById("cocktailInput").value; 
-    //   console.log(cocktailChoiceEl);
+   
 $.ajax({
     method: 'GET',
     url: 'https://api.api-ninjas.com/v1/cocktail?name=' + cocktailChoiceEl,
     headers: { 'X-Api-Key': 'KxE5FMqtJE+cddRT34B6Vw==Qj3At9bRl1rlRw1Z'},
     contentType: 'application/json',
     success: function(data) {
-        console.log(data);
+   
         for (let i = 0; i < data.length; i++)
-            {storeRecipes();
+            {
 
             cocktailsResultsEl.innerHTML += 
                 `<div class="card-info">
@@ -94,7 +94,7 @@ $.ajax({
                                     </p>
                         </div>
                 </div>`
-                function storeRecipes() {
+                function storeRecipes(data) {
                     // for (let i = 0; i < data.length; i++)
                          savedRecipes = {
                             name : data[i].name,
@@ -103,23 +103,15 @@ $.ajax({
                     };
                 
                     localStorage.setItem("savedRecipes", JSON.stringify(savedRecipes));
-                    console.log(savedRecipes);
+                 
                 };
                 
                 // function to display user's saved recipes to the page
-                function displaySavedRecipes() {
-                    var displaySavedRecipes = JSON.parse(localStorage.getItem("savedRecipes"))
-                // Check if data is returned, if not exit out of the function.
-                    if (displaySavedRecipes !== null) {
-                        document.getElementById("displaySavedRecipes").innerHTML = "Your saved recipes: " + displaySavedRecipes.name + displaySavedRecipes.ingredients + displaySavedRecipes.instructions;
-                    }
-                
-                };
-                // console.log();
-// storeRecipes();
+             
+               
+storeRecipes(data);
 displaySavedRecipes();
-// console.log(data.name); 
-console.log(data[i].name);
+
     }},
 
     error: function ajaxError(jqXHR) {
@@ -129,23 +121,26 @@ console.log(data[i].name);
 
 };
 
-// function to store user's recipe choice data to local storage
-// function storeRecipes() {
-//     savedRecipes = {
-//         name : data[i].name,
-//         ingredients : data[i].ingredients,
-//         instructions : data[i].instructions,
-//     };
 
-//     localStorage.setItem("savedRecipes", JSON.stringify(savedRecipes));
-// };
+function storeRecipes(data) {
+    // for (let i = 0; i < data.length; i++)
+         savedRecipes = {
+            name : data[i].name,
+            ingredients : data[i].ingredients,
+            instructions : data[i].instructions,
+    };
 
-// // function to display user's saved recipes to the page
-// function displaySavedRecipes() {
-//     var displaySavedRecipes = JSON.parse(localStorage.getItem("savedRecipes"))
-// // Check if data is returned, if not exit out of the function.
-//     if (displaySavedRecipes !== null) {
-//         document.getElementById("displaySavedRecipes").innerHTML = "Your saved recipes:" + displaySavedRecipes;
-//     }
+    localStorage.setItem("savedRecipes", JSON.stringify(savedRecipes));
+  
+};
 
-// };
+
+function displaySavedRecipes() {
+    var displaySavedRecipes = JSON.parse(localStorage.getItem("savedRecipes"))
+// Check if data is returned, if not exit out of the function.
+    if (displaySavedRecipes !== null) {
+        document.getElementById("displaySavedRecipes").innerHTML = "Your saved recipes: " + displaySavedRecipes.name + displaySavedRecipes.ingredients + displaySavedRecipes.instructions;
+    }
+
+};
+displaySavedRecipes();
