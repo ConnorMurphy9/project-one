@@ -99,7 +99,10 @@ $.ajax({
                                                                 <ul>
                                                                     ${data[i].ingredients}
                                                                 </ul>
-
+                                                           <h4>Instructions:</h4>
+                                                                <p>
+                                                                    ${data[i].instructions}
+                                                                </p>
                                                   </div>`
       console.log(data.name); 
        
