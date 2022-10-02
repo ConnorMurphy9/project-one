@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+
+    <link rel='stylesheet' type='text/css' href="./assets/style.css" />
+
+
+</head>
+
+
+<body>
+    <section id="head">
+        <fieldset>
+        <legend class="input">My Info</legend>
+        <input id="inpValue" type="text" placeholder="Name">
+        <input id="inpValue" type="text" placeholder="Age">
+        <input id="inpValue" type="text" placeholder="Height">
+        <input id="inpValue" type="text" placeholder="Weight">
+        <button type="button" id="btnInsert">Enter</button>
+        </fieldset>
+        <fieldset>
+        <legend>Info</legend>
+        <div id="lsOutput"></div>
+        </fieldset>
+        </section>
+        <div>
+        <ul id="top-menu">
+        <li><a href="index.html">HOME</a></li>
+        <li><a href="about.html">ABOUT</a></li>
+        <li><a href="recent.html">RECENT</a></li>
+        <li><a href="contactus.html">CONTACT US</a></li>
+        </ul>
+        </div>
+
+    <div class="background-image">
+
+        <div class="wrapper">
+            <div class="container">
+
+            </div>
+        </div>
+        <nav class="navbar navbar-light bg-dark">
+
+        </nav>
+
+
+        <div class="main-content col-12">
+
+            <div class="col-3">
+                <div id="left">
+                    <h2>Beverages</h2>
+
+                    <div class="img-wrapper cocktail-img">
+
+                        <img class="img-fluid" src="assets/cocktail 7.jpg" alt="cocktail">
+
+                    </div>
+                </div>
+                <form class="form-inline mt-3" id="cocktail-search">
+
+                    <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+
+                    <button class="btn btn-outline-success my-3" type="submit">Search</button>
+
+                </form>
+                <div id="cocktail09">
+
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+                        <label class="form-check-label" for="flexRadioDefault1">
+                            Margarita
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2"
+                            checked>
+                        <label class="form-check-label" for="flexRadioDefault2">
+                            Vodka or Rum
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+                        <label class="form-check-label" for="flexRadioDefault1">
+                            Ordinary drink or Cocktail
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2"
+                            checked>
+                        <label class="form-check-label" for="flexRadioDefault2">
+                            Random Cocktail
+                        </label>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="col-3">
+                <div id="right">
+                    <h2>Dish</h2>
+
+                    <div class="img-wrapper dinner-img">
+
+                        <img class="img-fluid" src="assets/fancy dish.jpg" alt="cocktail">
+
+                    </div>
+                </div>
+                <form class="form-inline mt-3 dish-form" id="dinner-search">
+                    <input class="form-control mr-sm-2 dish-input" type="search" placeholder="Search" aria-label="Search">
+                    <button class="btn btn-outline-success my-3" type="submit">Search</button>
+                </form>
+                <div class="dishes-results">
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+<script type="text/javascript" src="js/script.js"></script>
+</body>
+</html>
