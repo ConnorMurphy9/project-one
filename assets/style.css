@@ -98,13 +98,14 @@ li{
     font-size: 20px;
     color: white
  
-
-.background-image{
+/* 
+.b-image{
     background-image: url("./burgundy.jpg");
     background-size: cover;
     background-repeat: no-repeat ;
-    /* height: 100vh; */
-}
+    height: 100vh;
+} */
+
 label{
     color: white;
 }
@@ -168,4 +169,9 @@ p {
 div {
     margin-top: 40px;
 
+}
+
+#displaySavedRecipes {
+    color: white;
+    
 }
