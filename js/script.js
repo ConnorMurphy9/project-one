@@ -90,7 +90,7 @@ $.ajax({
     success: function(data) {
         console.log(data);
         for (let i = 0; i < data.length; i++)
-            {cocktailsResultsEl.innerHTML = `<div class="card-info">
+            {cocktailsResultsEl.innerHTML += `<div class="card-info">
                                                 <h3>${data[i].name}</h3>
                                             
                                                   <div class="card-body">
