@@ -75,7 +75,7 @@ $.ajax({
     headers: { 'X-Api-Key': 'KxE5FMqtJE+cddRT34B6Vw==Qj3At9bRl1rlRw1Z'},
     contentType: 'application/json',
     success: function(data) {
-   
+        cocktailsResultsEl.innerHTML = "";
         for (let i = 0; i < data.length; i++)
             {
 
