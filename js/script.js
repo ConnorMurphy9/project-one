@@ -9,7 +9,7 @@ var cocktailChoiceEl = "";
 var cocktailBtnEl = document.getElementById("cocktailBtn");
 var rightCard = document.getElementById("right");
 var leftCard = document.getElementById("left");
-var cocktailsResultEl = document.getElementsByClassName()
+var cocktailsResultsEl = document.querySelector(".cocktails-results")
 var dishForm = document.querySelector(".dish-form");
 var dishInput = document.querySelector(".dish-input");
 var dishesResult = document.querySelector(".dishes-results");
@@ -87,10 +87,25 @@ $.ajax({
     url: 'https://api.api-ninjas.com/v1/cocktail?name=' + cocktailChoiceEl,
     headers: { 'X-Api-Key': 'KxE5FMqtJE+cddRT34B6Vw==Qj3At9bRl1rlRw1Z'},
     contentType: 'application/json',
-    success: function(result) {
-        console.log(result);
-        
-    },
+    success: function(data) {
+        console.log(data);
+        for (let i = 0; i < data.length; i++)
+            {cocktailsResultsEl.innerHTML = `<div class="card-info">
+                                                <h3>${data[i].name}</h3>
+                                            
+                                                  <div class="card-body">
+                                                        <div class="card-ingredients">
+                                                           <h4>Ingredients:</h4>
+                                                                <ul>
+                                                                    ${data[i].ingredients}
+                                                                </ul>
+
+                                                  </div>`
+      console.log(data.name); 
+       
+      console.log(data[i].name) ;
+    }},
+
     error: function ajaxError(jqXHR) {
         console.error('Error: ', jqXHR.responseText);
     }
