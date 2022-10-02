@@ -3,13 +3,13 @@
 var spoonacularAPIKey = "eeb9c6fafcaf4013839d8c8e6162013a";
 // var cocktailAPIKey = "KxE5FMqtJE+cddRT34B6Vw==Qj3At9bRl1rlRw1Z";
 var cocktailAPIKey = "d9d1de419cmsh3efe3d08141101ap1d1cdejsnd21e801ce08b"
-// var dinnerChoice = document.getElementById("dinnerInput").value;
+// var dinnerChoice = document.getElementById("dinnerInput");
 var dinnerBtn = document.getElementById("dinnerBtn");
-// var cocktailChoice = document.getElementById("cocktailInput").value;
-var cocktailBtn = document.getElementById("cocktailBtn");
+var cocktailChoiceEl = "";
+var cocktailBtnEl = document.getElementById("cocktailBtn");
 var rightCard = document.getElementById("right");
 var leftCard = document.getElementById("left");
-
+var cocktailsResultEl = document.getElementsByClassName()
 var dishForm = document.querySelector(".dish-form");
 var dishInput = document.querySelector(".dish-input");
 var dishesResult = document.querySelector(".dishes-results");
@@ -53,6 +53,51 @@ dishForm.addEventListener("submit", (e) => {
    
       
 })
+
+// cocktailBtnEl.addEventListener("click", cocktailSearch);
+// function cocktailSearch (event) {
+//     event.preventDefault();
+//     cocktailChoiceEl = document.getElementById("cocktailInput").value; 
+//     console.log(cocktailChoiceEl);
+//     const options = {
+//        method: 'GET',
+//        headers: {
+//         'X-RapidAPI-Key': 'd9d1de419cmsh3efe3d08141101ap1d1cdejsnd21e801ce08b',
+//         ' X-RapidAPI-Host': 'cocktail-by-api-ninjas.p.rapidapi.com'
+//     }
+//   };
+  
+//   fetch(`https://cocktail-by-api-ninjas.p.rapidapi.com/v1/cocktail?`, options)
+//     .then(response => response.json())
+//     .then(response => console.log(response))
+//     .catch(err => console.error(err));
+
+
+
+
+
+// }
+cocktailBtnEl.addEventListener("click", cocktailSearch);
+function cocktailSearch (event) {
+  event.preventDefault();
+  cocktailChoiceEl = document.getElementById("cocktailInput").value; 
+      console.log(cocktailChoiceEl);
+$.ajax({
+    method: 'GET',
+    url: 'https://api.api-ninjas.com/v1/cocktail?name=' + cocktailChoiceEl,
+    headers: { 'X-Api-Key': 'KxE5FMqtJE+cddRT34B6Vw==Qj3At9bRl1rlRw1Z'},
+    contentType: 'application/json',
+    success: function(result) {
+        console.log(result);
+        
+    },
+    error: function ajaxError(jqXHR) {
+        console.error('Error: ', jqXHR.responseText);
+    }
+})};
+
+
+
 
 
 var spoonacularAPIKey = "af28c41e911742cab678a8ddcd93acaa";
@@ -128,128 +173,115 @@ var cocktailInfo3 = "";
 // If user wants to filter cocktail search criteria by name (such as margarita), fetch this
 
 // When user clicks cocktail button, search for a cocktail
-cocktailBtnEl.addEventListener("click", cocktailNameSearch);
-function cocktailNameSearch(event) {
-  event.preventDefault();
+// cocktailBtnEl.addEventListener("click", cocktailNameSearch);
+// function cocktailNameSearch(event) {
+//   event.preventDefault();
 
 
-// Targets div id "drink1" of carousel on left of page
-cocktailInfo1 = document.getElementById("drink1");
+// // Targets div id "drink1" of carousel on left of page
+// cocktailInfo1 = document.getElementById("drink1");
   
-// cocktailData variable is is user's cocktail input
-var cocktailData = cocktailChoiceEl.value;
-  //     fetch(`https://www.thecocktaildb.com/api/json/v1/1/search.php?s=${cocktailChoice}`)
-  //         .then(response => response.json())
-  //         .then(function(data) {console.log(data);
-  //  var cocktailInfo1 = document.getElementById("drink1");
-  //             cocktailInfo1.innerHTML = `<h2 id="drinkName1">${data.drinks[0].strDrink}</h2><p
-  //             id="ingredients">Ingredients:${data.drinks[0]}`
-  console.log(cocktailData);
+// // cocktailData variable is is user's cocktail input
+// var cocktailData = cocktailChoiceEl.value;
+//   //     fetch(`https://www.thecocktaildb.com/api/json/v1/1/search.php?s=${cocktailChoice}`)
+//   //         .then(response => response.json())
+//   //         .then(function(data) {console.log(data);
+//   //  var cocktailInfo1 = document.getElementById("drink1");
+//   //             cocktailInfo1.innerHTML = `<h2 id="drinkName1">${data.drinks[0].strDrink}</h2><p
+//   //             id="ingredients">Ingredients:${data.drinks[0]}`
+//   console.log(cocktailData);
   
-  // search cocktail api database for drink based on what user typed, return data as object
-  fetch(`https://www.thecocktaildb.com/api/json/v1/1/search.php?s=${cocktailData}`)
-    .then((response) => response.json())
-    .then(function (data) {
-      // if no drink data, stop
-      if (data.drinks.length === 0) {
-        console.warn("no drink data");
-        return;
-      }
-      // for each data object in length of drink list returned, 
-      for (let x = 0; x < data.drinks.length; x++) {
+//   // search cocktail api database for drink based on what user typed, return data as object
+//   fetch(`https://www.thecocktaildb.com/api/json/v1/1/search.php?s=${cocktailData}`)
+//     .then((response) => response.json())
+//     .then(function (data) {
+//       // if no drink data, stop
+//       if (data.drinks.length === 0) {
+//         console.warn("no drink data");
+//         return;
+//       }
+//       // for each data object in length of drink list returned, 
+//       for (let x = 0; x < data.drinks.length; x++) {
        
-        // create variable called "obj" 
-        var obj = data.drinks[x];
-        console.log(data);
+//         // create variable called "obj" 
+//         var obj = data.drinks[x];
+//         console.log(data);
         
-        // console.log("herrrrrererere", Object.entries(obj));
-        console.log("obj", obj);
+//         // console.log("herrrrrererere", Object.entries(obj));
+//         console.log("obj", obj);
        
-        // create div element onto HTML called carouselDiv
-        const carouselDiv = document.createElement("div");
-        // console.log(carouselDiv);
+//         // create div element onto HTML called carouselDiv
+//         const carouselDiv = document.createElement("div");
+//         // console.log(carouselDiv);
         
-        // set attribute of carouselDiv element to: "class", "carousel-item"
-        carouselDiv.setAttribute("class", "carousel-item");
+//         // set attribute of carouselDiv element to: "class", "carousel-item"
+//         carouselDiv.setAttribute("class", "carousel-item");
        
-        // will always set first item of carousel to active as long as for loop above starts x at 0
-        if (x === 0) carouselDiv.setAttribute("class", "carousel-item active");
+//         // will always set first item of carousel to active as long as for loop above starts x at 0
+//         if (x === 0) carouselDiv.setAttribute("class", "carousel-item active");
         
-        // set const "img" as actual img element being created in HTML
-        /*const img = document.createElement("img");*/
-        // img.crossOrigin = "Anonymous";
+//         // set const "img" as actual img element being created in HTML
+//         /*const img = document.createElement("img");*/
+//         // img.crossOrigin = "Anonymous";
         
-        // set image attributes in HTML of said const img src to whichever part in the data contains a real image or some kind of data
-        /*img.setAttribute("src", obj.strImageSource || obj.strDrinkThumb);*/
-        // console.log(obj.strImageSource);
+//         // set image attributes in HTML of said const img src to whichever part in the data contains a real image or some kind of data
+//         /*img.setAttribute("src", obj.strImageSource || obj.strDrinkThumb);*/
+//         // console.log(obj.strImageSource);
         
-        // append the img to the carouselDiv element
-        /*carouselDiv.appendChild(img);*/
+//         // append the img to the carouselDiv element
+//         /*carouselDiv.appendChild(img);*/
        
-        const cocktailRecipeNameDiv = document.createElement("div");
-        carouselDiv.appendChild(cocktailRecipeNameDiv);
-        cocktailRecipeNameDiv.textContent = `${data.drinks[x].strDrink}`;
-        console.log(cocktailRecipeNameDiv);
+//         const cocktailRecipeNameDiv = document.createElement("div");
+//         carouselDiv.appendChild(cocktailRecipeNameDiv);
+//         cocktailRecipeNameDiv.textContent = `${data.drinks[x].strDrink}`;
+//         console.log(cocktailRecipeNameDiv);
 
 
 
-        // set const "ingredientDiv" as new div in HTML 
-        const ingredientDiv = document.createElement("div");
+//         // set const "ingredientDiv" as new div in HTML 
+//         const ingredientDiv = document.createElement("div");
         
-        // add the new ingredientDiv to the carouselDiv
-        carouselDiv.appendChild(ingredientDiv);
+//         // add the new ingredientDiv to the carouselDiv
+//         carouselDiv.appendChild(ingredientDiv);
         
 
-        // declare new variable for ingredients list inside drinks data
-        var ingredientArray = Object.entries(obj).slice(17, 32);
-        console.log("ingredientArray", ingredientArray);
+//         // declare new variable for ingredients list inside drinks data
+//         var ingredientArray = Object.entries(obj).slice(17, 32);
+//         console.log("ingredientArray", ingredientArray);
         
-        // set "drink1" element of carousel's contents as a string 
-        cocktailInfo1.innerHTML = "";
+//         // set "drink1" element of carousel's contents as a string 
+//         cocktailInfo1.innerHTML = "";
        
-        // declares temporary variable/index "i" inside ingredient array
-        for (let i in ingredientArray) {
-          // (var i=0; i<ingredientArray.length; i++);
+//         // declares temporary variable/index "i" inside ingredient array
+//         for (let i in ingredientArray) {
+//           // (var i=0; i<ingredientArray.length; i++);
          
-          // using 1 for index here because the ingredientArray index of 0 in each object is literally just strIngredient1, strIngredient2...etc. This gives us actual ingredients instead of nonsense  
-            if (ingredientArray[i][1] != null) {
+//           // using 1 for index here because the ingredientArray index of 0 in each object is literally just strIngredient1, strIngredient2...etc. This gives us actual ingredients instead of nonsense  
+//             if (ingredientArray[i][1] != null) {
               
-              // as long as there is an ingredient to list in data, create a "p" element
-              let p = document.createElement("p");
-              // set the text content of this new p element to the ingredient
-              p.textContent = "Ingredient:" + ingredientArray[i][1];
-              // console.log(ingredientArray[i][0]);
-              console.log(ingredientArray[i][1]);
-              // add this new p element to the ingredientDiv element
-              ingredientDiv.appendChild(p);
-              // cocktailRecipeName.textContent = `${data.drinks[i].strDrink}`;
-          }
-        }
-        carouselInner.appendChild(carouselDiv);
-        const cocktailInstructionP = document.createElement("p");
-        carouselDiv.appendChild(cocktailInstructionP)
-        cocktailInstructionP.textContent = "Instructions: " + `${data.drinks[x].strInstructions}`
-      }
-      console.log(data.drinks[0].strDrink);
-    });
-}
+//               // as long as there is an ingredient to list in data, create a "p" element
+//               let p = document.createElement("p");
+//               // set the text content of this new p element to the ingredient
+//               p.textContent = "Ingredient:" + ingredientArray[i][1];
+//               // console.log(ingredientArray[i][0]);
+//               console.log(ingredientArray[i][1]);
+//               // add this new p element to the ingredientDiv element
+//               ingredientDiv.appendChild(p);
+//               // cocktailRecipeName.textContent = `${data.drinks[i].strDrink}`;
+//           }
+//         }
+//         carouselInner.appendChild(carouselDiv);
+//         const cocktailInstructionP = document.createElement("p");
+//         carouselDiv.appendChild(cocktailInstructionP)
+//         cocktailInstructionP.textContent = "Instructions: " + `${data.drinks[x].strInstructions}`
+//       }
+//       console.log(data.drinks[0].strDrink);
+//     });
+// }
 
-dinnerBtnEl.addEventListener('click', dinnerSearch);
+// dinnerBtnEl.addEventListener('click', dinnerSearch);
 
-function dinnerSearch() {
-  var dinnerChoice = document.getElementById("dinnerInput");
-  
-  var dinnerEl = document.getElementById("dinnerEl");
 
-  fetch(`https://api.spoonacular.com/recipes/search?apiKey=${spoonacularAPIKey}&${dinnerChoice}`)
-  .then((response) => response.json())
-  .then(function (data) {
-    console.log(data);
-    // if no food data, stop
-    // if (data.drinks.length === 0) {
-    //   console.warn("no drink data");
-      // return;
-    })};
 
 
 
